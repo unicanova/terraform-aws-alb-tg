@@ -1,5 +1,9 @@
-variable "aws_region" {
+variable "region" {
   default = "us-west-2"
+}
+
+variable "alb_name" {
+  default = "alb-name"
 }
 
 variable "certificate_arn" {
@@ -12,6 +16,11 @@ variable "instance_tags" {
         "instance_name" = "Unicanova"
         "instance_env"  = "dev"
     }
+}
+
+variable "security_groups" {
+  type    = "list"
+  default = []
 }
 
 variable "vpcid" {
