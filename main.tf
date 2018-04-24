@@ -30,9 +30,9 @@ module "alb" {
   vpc_id                        = "${data.aws_vpc.default.id}"
   https_listeners               = "${list(map("certificate_arn", var.certificate_arn, "port", 443, "target_group_index", 0))}"
   https_listeners_count         = "1"
-  http_tcp_listeners            = "${list(map("port", "80", "protocol", "HTTP", "target_group_index", "0"))}"
+  http_tcp_listeners            = "${list(map("port", "80", "protocol", "HTTP", "target_group_index", 1))}"
   http_tcp_listeners_count      = "1"
-  target_groups                 = "${list(var.socket_map, var.http_map, var.http_redirect_map)}"
+  target_groups                 = "${list(var.http_map, var.http_redirect_map, var.socket_map)}"
   target_groups_count           = "3"
 }
 
